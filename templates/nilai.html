@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Admin</title>
+</head>
+<body >
+    <div class="body-admin" >
+        <div class="admin-parent"> 
+            <div class="nav-admin">
+                <ul class="item-admin">
+                    <h1>A</h1>
+                    <li ><a style="color: rgb(249, 249, 249);" href="{{ url_for('admin') }}">Database Film</a></li>
+                    <li ><a style="color: rgb(245, 242, 242);" href="{{ url_for('input') }}" >Input Film</a></li>  
+                    <li><a class="active" style=" color:aqua;" href="/logout">logout</a> </li>   
+                </ul>
+            </div>
+        </div> 
+        <div class="tabel-wrapper">
+            <div class="tombol-tabel">
+                <a href="{{ url_for('admin')}}" class="inactive" style=" margin:0 5rem;">Komponen Film</a>
+                <a class="active">Nilai Film</a>
+            </div>
+            <table>
+                <tr>
+                    <th>Judul</th>
+                    <th>Penonton</th>
+                    <th>Harga</th>
+                    <th>Rating</th>
+                    <th>Vote</th>
+                    <th>Score</th>
+                </tr>
+                {% for film in films %}
+                <tr>
+                    <td>{{ film[1] }}</td>
+                    <td>{{ film[3] }}</td>
+                    <td>{{ film[4] }}</td>
+                    <td>{{ film[5] }}</td>
+                    <td>{{ film[6] }}</td>
+                    <td  style="max-width: 90px;" >{{ film[12] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>   
+    </div>
+    </body>
+</html>

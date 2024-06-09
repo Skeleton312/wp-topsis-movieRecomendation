@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Admin</title>
+</head>
+<body >
+    <div class="body-admin" >
+        <div class="admin-parent"> 
+            <div class="nav-admin">
+                <ul class="item-admin">
+                    <h1>A</h1>
+                    <li ><a style="color: rgb(249, 249, 249);" href="{{ url_for('admin') }}" >Database Film</a></li>
+                    <li ><a style="color: rgb(249, 249, 249);" href="{{ url_for('input') }}" >Input Film</a></li>
+                    <li><a class="active" style=" color:aqua;" href="/logout">logout</a> </li>   
+                </ul>
+            </div>
+        </div> 
+        <div class="container-form">
+            <form action="/submit" method="post" enctype="multipart/form-data">
+                <div class="row">
+                  <div class="col-25">
+                    <label >Judul</label>
+                  </div>
+                  <div class="col-75">
+                    <input type="text" name="judul" placeholder="Judul film">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-25">
+                    <label >Tahun</label>
+                  </div>
+                  <div class="col-75">
+                      <input type="number" name="tahun" placeholder="Tahun Rilis">
+                    </div>
+                </div>
+                <div class="row">
+                  <div class="col-25">
+                    <label >Aktor</label>
+                  </div>
+                  <div class="col-75">
+                      <input type="text"  name="aktor" placeholder="Aktor">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-25">
+                    <label >Link Youtube</label>
+                  </div>
+                  <div class="col-75">
+                      <input type="text"  name="link" placeholder="Kode Youtube" required>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-25">
+                    <label >Poster</label>
+                  </div>
+                  <div class="col-75">
+                      <input type="file" name="poster" placeholder="Upload Foto" enctype="multipart/form-data" required>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-25">
+                    <label >Deskripsi</label>
+                  </div>
+                  <div class="col-75">
+                    <input type="text" name="deskripsi" placeholder="Write something.." style="height:200px"></input>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-25">
+                    <label >Sinopsis</label>
+                  </div>
+                  <div class="col-75">
+                    <input type="text"  name="sinopsis" placeholder="Write something.." style="height:200px"></input>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-25">
+                    <label >Rating</label>
+                  </div>
+                  <div class="col-75">
+                    <input type="number" name="rating" placeholder="Rating" step="0.1">
+                </div>
+                </div>
+                <div class="row">
+                  <div class="col-25">
+                    <label>Jumlah Penonton</label>
+                  </div>
+                  <div class="col-75">
+                    <input type="number" name="penonton" placeholder="Jumlah Penonton" step="0.1">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-25">
+                    <label>Harga(USD)</label>
+                  </div>
+                  <div class="col-75">
+                    <input type="number" name="harga" placeholder="Harga Rata-rata" step="0.1">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-25">
+                    <label>Vote</label>
+                  </div>
+                  <div class="col-75">
+                    <input type="number" name="vote" placeholder="Jumlah vote" step="0.1">
+                  </div>
+                </div>
+                <div class="row">
+                <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" /> 
+                <input type="submit" value="Submit">
+              </div>
+            </form>
+        </div>
+    </div>
+    </body>
+</html>

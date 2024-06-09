@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Admin</title>
+</head>
+<body >
+    <div class="body-admin" >
+        <div class="admin-parent"> 
+            <div class="nav-admin">
+                <ul class="item-admin">
+                    <h1>A</h1>
+                    <li ><a style="color: rgb(249, 249, 249);" href="/admin" >Database Film</a></li>
+                    <li ><a style="color: rgb(249, 249, 249);" href="/input" >Input Film</a></li>   
+                    <li><a class="active" style=" color:aqua;" href="/logout">logout</a> </li>               
+                </ul>
+            </div>
+        </div> 
+        <div class="tabel-wrapper">
+            <div class="tombol-tabel">
+                <a class="active" style=" margin:0 5rem;">Komponen Film</a>
+                <a href="{{ url_for('nilai')}}" class="inactive">Nilai Film</a>
+            </div>
+            <table>
+                <tr>
+                    <th>Judul</th>
+                    <th>Tahun Rilis</th>
+                    <th>Youtube</th>
+                    <th>Poster</th>
+                    <th>Deskripsi</th>
+                    <th>Sinopsis</th>
+                    <th>Aktor</th>
+                </tr>
+                {% for film in films %}
+                <tr>
+                    <td style="max-width: 90px;">{{ film[1] }}</td>
+                    <td>{{ film[2] }}</td>
+                    <td>{{ film[10] }}</td>
+                    <td><img style="width: 3rem; height: 1.6875rem;" src="{{ url_for('static', filename='aset/' + film[9]) }}"></td>
+                    <td>{{ film[7] }}</td>
+                    <td>{{ film[8] }}</td>
+                    <td  style="max-width: 90px;" >{{ film[11] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>   
+    </div>
+    </body>
+</html>
